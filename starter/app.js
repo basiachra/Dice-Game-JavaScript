@@ -14,9 +14,8 @@ GAME RULES:
 
 */
 
-var scores, roundScore, activePlayer,winningPoints,gamePlaying, prev;
+var scores, roundScore, activePlayer,winningPoints,gamePlaying, prev,input;
 
-winningPoints = 100;
 init();
 
 document.querySelector('.btn-roll').addEventListener('click', function(){
@@ -58,6 +57,7 @@ document.querySelector('.btn-hold').addEventListener('click', function(){
         document.getElementById('score-' + activePlayer).textContent = scores[activePlayer];
 
         //Check id player won the game
+
         if (scores[activePlayer] >= winningPoints) {
             document.querySelector('#name-' + activePlayer).textContent = 'Winner!';
             document.querySelector('.dice').style.display = 'none';
@@ -90,6 +90,9 @@ function init(){
     roundScore = 0;
     prev = 0;
     gamePlaying = true;
+    input = document.getElementById('win-score').value;
+
+    input ? winningPoints = input : winningPoints = 100;
 
     document.querySelector('.dice').style.display = 'none'; //zmiana stylu
 
@@ -104,6 +107,7 @@ function init(){
     document.querySelector('.player-0-panel').classList.remove('active');
     document.querySelector('.player-1-panel').classList.remove('active');
     document.querySelector('.player-0-panel').classList.add('active');
+
 }
 
 
